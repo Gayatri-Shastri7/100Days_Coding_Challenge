@@ -1,0 +1,78 @@
+Infix Expression - Infix Expression is of the form variable1 operator variable2
+
+Examples are :
+
+a + b
+(a+b) - (a-b)
+
+PostFix Expression Postfix Expression is of the form variable1 variable2 operator. They are notations to express expressions without bracket.
+
+Examples are :
+
+ab+
+ab+cd+
+
+How can we convert from Infix to Postfix
+Before we try to find how can we can convert this? Lets try to understand how would we have done this manually, and what we need to convert the expression?
+
+For example.
+
+We have to convert operand1 operator operator2 to operand1 operand2 operator for converting infix to postfix operation, considering precedence of the operators.
+
+To convert (a+b) - (a-b):
+
+() takes first precedence, hence we will convert (a+b) to ab+ and store this somewhere.
+Next - is stored somewhere.
+Next we will convert (a-b) to ab- and store this somewhere.
+Then we will take both ab+, ab- and - operator in between, and hence, will convert operand1 operator operator2 to operand1 operand 2 operator i.e ab+ab--
+We need a data structure, that can automatically manages the intermediate results, and handle precedence of operators accordingly. Thus we use stack which provides the last saved intermediate result first, and we can alter it and again push next intermediate result on the stack. At the last the final conversion is also pushed on to the stack.
+
+Operator Precedence
+We should know operator precedence of the operators:
+
+S.No	Operator
+1	()
+2	[]
+3	* / %
+4	+ -
+5	^
+Algorithm
+The basic fundamental of the algorithm will be:
+If we encounter an operand we will write in the expression string, if we encounter an operator we will push it to an operator stack. Lets see through algorithm, how the operators are popped?
+
+1. Create a stack.
+2. Scan the expression from left to right.
+3. for each element x in the stack:
+    if x is operand
+        Output x
+    elseif x is ‘)’
+        pop the stack and and output it until a ‘(‘ is encountered, and discard both the parenthesis.
+    elseif x is '('
+        push it to the stack
+    else if x is an operator
+        if precedence(x) is greater than precendece(operator on stack) or stack only has '('
+            push(x)
+        else pop all operators from stack whose precedence >= precedence(x). Then, push(x).
+4. In the end, pop all the remaining elements and print them.
+Run through with an example
+Infix expression: ( ( A + B ) — C * ( D / E ) )
+
+We have following:
+
+Output Expression
+An operator stack.
+Lets iterate over the infix expression char by char, and see what will be state of operator stack and output expression at each step.
+
+Queue
+
+So the output postfix expression is : A B + C D E / * -
+
+Few More Examples
+Infix Expression	PostFix Operation
+a+b	ab+
+c*d-e	cd*e-
+a+b-c	ab+c-
+Advantage of Postfix Expression over Infix Expression
+While converting to postfix expression, we eliminate parantheses which signify priority of evaluation and eliminates the need to know precedence during evaluation of the expression. Hence, postfix expression is better over infix expression.
+
+An infix expression is tough to know and keep track of precedence of operators for machine, whereas postfix expression itself determines the precedence of operators (as the placement of operators in a postfix expression depends upon its precedence). Hence, for a compiler it is easier to evaluate postfix expression than an infix expression.
