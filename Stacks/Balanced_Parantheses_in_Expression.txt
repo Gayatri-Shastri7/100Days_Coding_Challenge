@@ -1,0 +1,83 @@
+
+## Check for Balanced Parenthesis
+Given an expression, we have to write a program to determine if the expression has balanced parenthesis.
+
+When an expression is said to have balanced parenthesis
+
+if the order of pairs {}, (), [] should is in correct order, then the expression is said to be balanced, otherwise not.
+
+Examples
+
+Expression	Balanced or Not
+(A+B) - (C-D)	Balanced
+(()]	Not Balanced
+[(])	Not balanced
+How to determine if the parenthesis in expression are balanced or not
+Characters are read one by one from the expression. If the character is an opening delimiter such as (, {, or [, then it is stored somewhere.
+
+If the character is closing delimiter like ), } or ], then a character is removed from the place where old characters were stored.
+
+The removed element and closing delimiter are compared, if they form a pair, the process is continued, otherwise false is returned.
+
+How do we solve this?
+
+We need a data structure, where we can store characters and opening brackets in LIFO (Last In First Out) pattern, and compare the last inserted character with the present character.
+
+Thus we use stack which provides the last pushed character first, and we can process them to find if the brackets in the expression was balanced or not.
+
+Algorithm:
+
+Create a stack.
+
+Iterate over all the characters of the string.
+
+If the character read is not a parenthesis, ignore it.
+
+If the character is opening delimiter, push it onto the stack
+
+If it is a closing delimiter then if the stack is empty, return false. Otherwise pop the stack. If the symbol popped doesn’t form pair with character, return false.
+
+When the input is parsed, check if the stack or not. If the stack is not empty return false, else return true.
+
+Algorithm Run Through
+Input Exp = [([]())]
+
+Input Symbol, Exp[i]	Operation	Stack	Output
+[	Push on stack	[	
+(	Push on stack	[(	
+[	Push on stack	[([	
+]	Pop from stack, match [,]	[(	
+(	Push on stack	[((	
+)	Pop from stack, match (,)	[(	
+)	Pop from stack, match (,)	[	
+]	Pop from stack, match [,]	[(	
+Check if stack is empty		True
+Function to check balanced parenthesis
+def AreParenthesisBalanced(exp):
+    S = Stack()
+    for i in range(len(exp)):
+        if(exp[i] == '(' or exp[i] == '{' or exp[i] == '['):
+            S.push(exp[i])
+        elif(exp[i] == ')' or exp[i] == '}' or exp[i] == ']' ):
+            if(S.empty() or !ArePair(S.top(), exp[i])):
+                return False
+            else:
+                S.pop()
+    return S.empty()
+bool AreParenthesisBalanced(string exp)
+{
+	stack<char> S;
+	for(int i =0; i<exp.length(); i++)
+	{
+		if(exp[i] == '(' || exp[i] == '{' || exp[i] == '[')
+			S.push(exp[i]);
+		else if(exp[i] == ')' || exp[i] == '}' || exp[i] == ']')
+		{
+			if(S.empty() || !ArePair(S.top(),exp[i]))
+				return false;
+			else
+				S.pop();
+		}
+	}
+	return (S.empty());
+}
