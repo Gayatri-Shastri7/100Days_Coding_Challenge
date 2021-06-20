@@ -1,4 +1,55 @@
 ### write your solution below this line ### 
+# Implement Stack and its operations
+# Write a program to implement the following operations in a Stack:
+
+# Operations:
+
+# push:       To add the elements into Stack
+# pop:         To remove the element from Stack and return the element.
+# peek:        To get the top element from the Stack and return the element.
+# isEmpty:   returns 1 is stack is empty. Else returns 0
+# isFull:       returns 1 is stack is full. Else returns 0
+# Some code has already been written. Please use the given structure / class to write your own functions
+
+
+# output:
+#  Status
+# Test Cases Passed
+# Input
+# 10
+# 10
+# 5
+# 4
+# 1 1
+# 1 1
+# 1 2
+# 1 3
+# 1 4
+# 3
+# 2
+# 3
+# Expected Output
+# isFull:0
+# isEmpty:1
+# push:1
+# push:1
+# push:2
+# push:3
+# push:4
+# peek:4
+# pop:4
+# peek:3
+# Your Output
+# isFull:0
+# isEmpty:1
+# push:1
+# push:1
+# push:2
+# push:3
+# push:4
+# peek:4
+# pop:4
+# peek:3
 
 class Stack:
  
