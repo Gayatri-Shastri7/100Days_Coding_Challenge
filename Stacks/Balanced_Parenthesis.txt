@@ -1,0 +1,65 @@
+
+Implementing a Stack in Python
+Many of the Stack's functionality we can get from a list. However, in a stack, we want to strictly only remove or insert from one end: the top.
+
+To enforce this, we will define out own stack class.
+
+Our Stack Class
+class Stack:
+    def __init__(self):
+        self.data = []
+        self.top = -1
+The data list shall store the data
+The top integer keeps track of where our top is
+Now, let us define the push and pop methods:
+
+class Stack:
+    def __init__(self):
+        self.data = []
+        self.top = -1
+    def push(self, element):
+        self.data.append(element)
+        self.top = self.top + 1
+    def pop(self):
+        popped_element = None
+        if(self.top>-1):
+            popped_element = self.data.pop() 
+            self.top = self.top - 1
+        return popped_element
+push: accepts as parameter an element and inserts at the top of the array. It also increases top by 1
+pop: returns the topmost element and also decreases the value of top
+In this way, we have satisfied the vary basic properties of Stacks. Now, let's go deeper into some more methods.
+
+Similarly, we can apply the isEmpty() method to check whether the Stack is empty by checking the top value.
+
+And we can also define the peek method, which returns the most recent element inserted, but does not remove the element.
+
+Finally, this is how we would instantiate the stack:
+
+class Stack:
+    def __init__(self):
+        self.data = []
+        self.top = -1
+    def push(self, element):
+        self.data.append(element)
+        self.top = self.top + 1
+    def pop(self):
+        popped_element = None
+        if(self.top>-1):
+            popped_element = self.data.pop() 
+            self.top = self.top - 1
+        return popped_element
+ 
+myStack = Stack()
+myStack.push(5)
+myStack.push(4)
+myStack.push(7)
+print(f'popping: {myStack.pop()}')
+print(f'popping: {myStack.pop()}')
+print(f'popping: {myStack.pop()}')
+Output:
+
+popping: 7
+popping: 4
+popping: 5
+Go ahead and try out the upcoming questions on stacks!
