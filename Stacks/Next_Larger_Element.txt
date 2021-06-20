@@ -1,0 +1,102 @@
+
+Find Next Greater Elements of array elements
+What is next greater element
+Next greater element for an element is array is the first greater element to the right side of the array. If for any element next greater element is not present, then return -1.
+
+In which cases, next greater element for an array element wont be present:
+
+If the element is the rightmost element of the array
+If all the elements of the array are in decreasing order.
+How do we find next greater element of array elements
+Approach - 1
+
+A simple approach can be running two loops over the elements, and find the first greater element on the right side for each element.
+The time complexity of this approach will be O(n^2).
+
+Can we do better?
+
+We can use a data structure that always maintain all the smaller elements of the current element somewhere, and whenever we find the next greater element of any element we do print it, otherwise current element is also added to the smaller elements list.
+
+We can use stack for this. We maintain smaller element than current element and hence the current element will be the next greater element for the element in stack which we access as LIFO.
+
+If the current element is not next greater element of the element in stack, then it is pushed on the stack.
+
+Our code logic looks like
+Push the first element to the stack.
+Iterate for the remaining elements of the stack.
+Mark the current element as next
+If the stack is not empty, then pop an element from the stack.
+If the popped element is smaller than next, then we found the next greater element for the current top.
+Continue popping the elements till element is smaller and stack is not empty.
+Push next element to stack to find its next greater element.
+Complete the loop steps from ‘3’ to ‘7’
+After the step ‘2’ loop is completed, pop out remaining elements and mark their next greater element as -1.
+Function to find next greater element
+ 
+def PrintNextGreateElements(arr, n):  
+    my_stack = Stack()  
+    
+    # Push the first element to the stack
+    my_stack.push(arr[0])  
+      
+  
+   # Iteratate for the remaining elments of the stack
+    for i in range(1, n): 
+        if (my_stack.empty()):
+            my_stack.push(arr[i])  
+            continue  
+            
+        # If the stack is `not empty`, then `pop` an element from the stack.
+        # If the popped element is smaller than next, then we found the `next greater element for the current top.
+        # Continue popping the elements till `element` is `smaller` and stack is `not empty`.
+        while (!my_stack.empty() && my_stack.top() < arr[i]): 
+            print(str(my_stack.top()) + " " + str(arr[i]))
+            my_stack.pop()  
+  
+        # Push next element to stack to find its next greater element.
+        my_stack.push(arr[i])  
+  
+    # After the loop is completed, pop out remaining elements and mark their next greater element as -1
+    while (!my_stack.empty()): 
+        print(str(my_stack.top()) + " " +  str(-1) ):
+        my_stack.pop()  
+void PrintNextGreateElements(int arr[], int n)  
+{  
+    stack<int> my_stack;  
+    
+    // Push the first element to the stack
+    my_stack.push(arr[0]);  
+      
+  
+   //  Iteratate for the remaining elments of the stack
+    for (int i = 1; i < n; i++) 
+    {  
+  
+        if (my_stack.empty()) 
+        {  
+            my_stack.push(arr[i]);  
+            continue;  
+        }  
+  
+        // If the stack is `not empty`, then `pop` an element from the stack.
+        // If the popped element is smaller than next, then we found the `next greater` element for the current top.
+        // Continue popping the elements till `element` is `smaller` and stack is `not empty`.
+        while (!my_stack.empty() && my_stack.top() < arr[i]) 
+        {  
+            cout << my_stack.top() << " " <<  arr[i] << endl;
+            my_stack.pop();  
+        }  
+  
+        //  Push next element to stack to find its next greater element.
+        my_stack.push(arr[i]);  
+    }  
+  
+   //After the loop is completed, pop out remaining elements and mark their next greater element as -1
+    while (!my_stack.empty()) 
+    {  
+        cout << my_stack.top() << " " <<  -1 << endl;
+        my_stack.pop();  
+    }  
+  
+}  
+ 
