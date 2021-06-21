@@ -51,6 +51,17 @@
 # pop:4
 # peek:3
 
+    #steps
+# 1.Constructor to initialize the stack
+    # 2.Function to add an element `x` to the stack
+    # 3.Function to pop a top element from the stack
+        #3.1-- check for stack underflow
+        #3.2-- decrease stack size by 1 and (optionally) return the popped element
+    #4. Function to return the top element of the stack
+    #5. Function to return the size of the stack
+    #6. Function to check if the stack is empty or not
+    #7. Function to check if the stack is full or not
+
 class Stack:
  
     # Constructor to initialize the stack
