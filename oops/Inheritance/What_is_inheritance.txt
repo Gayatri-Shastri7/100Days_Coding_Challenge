@@ -1,0 +1,250 @@
+
+10
+Chat (46 Online)
+Search for coders
+Mariyala Harika
+Satyanarayana Uppada
+Keshav S
+JASWANTHIKA S
+VIGNESH SEKAR
+Meet Vaddoriya
+Charishma Seera
+Ishika L
+Dulam Sree Siva Gayathree Devi
+SUGGU PAVAN
+Sai Sushank Mantri Pramod
+kavya katkam
+Sasidhar Talluri
+ROHIT SAI PICHIKA
+Praneeth Bonagiri
+Mohammed Niha Tahoor
+Vilas chary sriramoji
+Garrepelli Laxmi Pranavi
+pragyna karunakaram
+svs sindhu
+Ruturaj Thakur
+Thriveni Thota
+Chidrapu Shreshta
+Bindhu123 Bindhu123
+Usha Nookala
+Hoyasala kannemadugu
+Bhavana Marpadaga
+Koti Amulya
+Melam Saikiran
+V Janaki Pratyusha TENNETI
+Varthya Aarthi
+Sharmila Undru
+RUTHIKA ARAVA
+Praneetha Sangirala
+Vaishnavi Pandey
+Manaswini Kyama
+Abhigna Nadupalli
+Teja botta
+Lalana Palwaye
+Priyanka Patil
+Radha Kalyani NAKKA
+Sri Sai Kamal Asari
+Kiranmayee Peddinti
+MOUNIKA PEDDI
+Shivani Reddy
+Anudeep Dhavaleswarapu
+_deep_ _b_
+shivam keshri
+manasa poluru
+Rutika Pasalkar
+221810303050 SISTLA SAI SREYAS
+madhulika Erukulla
+Manthina Sriram Varma
+balu balaji
+Pradnya Digole
+Bondili Jaya Naga Keerthi Singh
+PUNNA SURYA
+Yash Varshney
+30 min ago
+KANURI MAHESH
+Gowtham Sai
+Neelam Vinay
+Haritha Rathamsetty
+Krishnam Naidu S
+18131A0597 MACHARLA RAMA SAHITHI
+sanskruti patil
+M SAHARSH REDDY
+Koppisetti Sai Bhavya
+Alankruthi Saieni
+3 hrs ago
+Srinivas Sriramdas
+Demo Account
+Sri Charita KUSAMPUDI
+Preshitha Puppala
+Manaswini Akula
+Harini Induri
+Vamshi Raj
+GAYATRI GOTTUMUKKALA
+San Sherla
+Iam Uday
+Sreya _Ravi
+madhuri aradwad
+Poojitha Ravuri
+3 hrs ago
+Aditya Patil
+2 days ago
+Vinay Kumar
+6 months ago
+Abhinandan Panigrahi
+16 days ago
+Vijay Rohit
+2 hrs ago
+Aravind Barri
+3 days ago
+Sulagna Dutta
+6 hrs ago
+Aparna Daripalli
+2 months ago
+G Dharani
+6 days ago
+NAGA SAISRIYA CHAKRAVARTHI
+6 days ago
+Akhila Mailaram
+6 days ago
+Raghavendrarises@gmail.com Raghava
+17 hrs ago
+Bhavani Nimmala
+2 days ago
+Sowmya Sree Anupati
+4 days ago
+Jayanthi Gaddala
+2 days ago
+pavani basa
+1 month ago
+Venky Reddy
+3 days ago
+Megana Goud
+4 days ago
+Gundala Koustubha
+2 months ago
+Gaddam Sreeja
+4 days ago
+Object Oriented Programming
+25
+Rank
+All topics
+Estimated End Date: 01/03/21
+What is Inheritance? (Python)
+Inheritance is probably one of the most important features of OOP.
+
+Before we get into inheritance, let’s understand why it is needed.
+
+The need for inheritance
+The need for inheritance comes from us wanting to not repeat ourselves and having more logical design.
+
+When designing real world solutions, often times we want to define objects that are similar, but might have some differences in implementation. For example, we saw in the video that most game characters share some basic features but each character also something special or different about it.
+
+This sort of pattern, where some base features are common across objects, but each object has some additional features is the best use case for Inheritance.
+
+Let’s continue with defining the characters of a game. This time, we are defining the players of an adventure game.
+
+There are many players in this game, each has its own special powers. However, they all share some common properties like
+
+lives (how many lives do they have?),
+speed (what is their current speed?)
+and stamina (what is their current stamina?).
+Also, all Player objects have a method called run() which increases or decreases their speed.
+Now let us define 2 players, a Warrior and an Elf. In addition to the properties mentioned in Player,
+
+the Warrior has the property called strength
+and the Elf has property called magic.
+Summarizing what we have just mentioned:
+
+https://blockly.netlify.com/static/warrior_elf.png
+Where does inheritance come in?
+
+As we mentioned earlier, Inheritance is useful when we have some base properties that are common for all objects and some extra properties which are specific to some objects.
+
+In our example,
+
+the properties: lives, speed, stamina and run() are base properties
+strength (for Warrior) and magic (for Elf) are specific properties.
+We design this in Inheritance as follows, we define a base class: Player.
+Warrior class extends Player class, with additional property of strength.
+
+Similarly, Elf class extends Player class, with additional property of magic.
+
+The class diagram is as follows:
+
+https://blockly.netlify.com/static/class_diagram_1.png
+Here Player is the base class or parent class. Warrior is a subclass or child class of Player. Similarly, Elf is also a subclass or child class of Player.
+
+Defining inheritance
+Let’s see how we can define the above relationship in Python.
+
+First, let’s define the class Player
+
+class Player:
+    def __init__(self):
+        self.lives = 5
+        self.speed = 0
+        self.stamina = 10
+    def run(self):
+        self.speed = self.speed + 5
+The base class has been defined. To create subclasses, we define the new class, with the parent class in it's brackets:
+
+class Warrior(Player):
+    def __init__(self):
+        super().__init__() # initializing all values of parent class
+        self.strength = 10
+ 
+class Elf(Player):
+    def __init__(self):
+        super().__init__() # initializing all values of parent class
+        self.magic = 20
+Note here that the objects of the classes Warrior and Elf still have the following properties: lives, speed, stamina and run().
+
+We started by initializing the parent's class constructor using the super() keyword. Any time we want to access the parent class's properties, we use the super() keyword.
+
+The properties like strength and magic are in addition to the properties of the base or parent class.
+
+Let’s understand this by creating Warrior and Elf objects:
+
+class Player:
+    def __init__(self, lives, speed, stamina):
+        self.lives = lives
+        self.speed = speed
+        self.stamina = stamina
+    def run(self):
+        self.speed = self.speed + 5
+ 
+class Warrior(Player):
+    def __init__(self,lives,speed, stamina):
+        super().__init__(lives, speed, stamina) # initializing all values of parent class
+        self.strength = 100
+ 
+class Elf(Player):
+    def __init__(self,lives,speed, stamina):
+        super().__init__(lives, speed, stamina) # initializing all values of parent class
+        self.magic = 50
+        
+ 
+warrior_1 = Warrior(3,10,2) #new Warrior object created
+elf_1 = Elf(2,25,1) #new Elf object created
+# Exploring Warrior object
+print("Warrior:");
+print(f'Lives: {warrior_1.lives} Speed: {warrior_1.speed} Stamina: {warrior_1.stamina} Strength: {warrior_1.strength}')
+ 
+#Exploring Elf Object
+elf_1.run()
+print("Elf:")
+print(f'Lives: {elf_1.lives} Speed: {elf_1.speed} Stamina: {elf_1.stamina} Magic:  {elf_1.magic}')
+Output
+
+Warrior:
+Lives: 3 Speed: 10 Stamina: 2 Strength: 100
+Elf:
+Lives: 2 Speed: 30 Stamina: 1 Magic:  50
+https://blockly.netlify.com/static/warrior_elf_2.png
+In the above code:
+
+We have used a parameterized constructor instead of a default constructor
+This means that we used the super() also in a parameterized way.
+Notice that all the properties from the Player class exists in Warrior & Elf and then some more additional properties. This is inheritance.
+
+Also, notice how we used run() method with Elf - even though it is defined in the parent class.
