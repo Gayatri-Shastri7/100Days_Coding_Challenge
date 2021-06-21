@@ -1,0 +1,238 @@
+
+10
+Chat (49 Online)
+Search for coders
+Mariyala Harika
+Satyanarayana Uppada
+Keshav S
+JASWANTHIKA S
+VIGNESH SEKAR
+Meet Vaddoriya
+Charishma Seera
+Ishika L
+Dulam Sree Siva Gayathree Devi
+SUGGU PAVAN
+Sai Sushank Mantri Pramod
+kavya katkam
+Sasidhar Talluri
+ROHIT SAI PICHIKA
+Praneeth Bonagiri
+_deep_ _b_
+Mohammed Niha Tahoor
+Vilas chary sriramoji
+Garrepelli Laxmi Pranavi
+pragyna karunakaram
+svs sindhu
+Ruturaj Thakur
+Thriveni Thota
+Chidrapu Shreshta
+shivam keshri
+Bindhu123 Bindhu123
+Usha Nookala
+Hoyasala kannemadugu
+Bhavana Marpadaga
+Koti Amulya
+Melam Saikiran
+manasa poluru
+MOUNIKA PEDDI
+V Janaki Pratyusha TENNETI
+madhulika Erukulla
+Varthya Aarthi
+Sharmila Undru
+RUTHIKA ARAVA
+Praneetha Sangirala
+Vaishnavi Pandey
+Manaswini Kyama
+Abhigna Nadupalli
+Teja botta
+Lalana Palwaye
+Priyanka Patil
+Rutika Pasalkar
+Pradnya Digole
+Radha Kalyani NAKKA
+Manthina Sriram Varma
+Bondili Jaya Naga Keerthi Singh
+PUNNA SURYA
+Yash Varshney
+27 min ago
+KANURI MAHESH
+Gowtham Sai
+Neelam Vinay
+Haritha Rathamsetty
+Krishnam Naidu S
+18131A0597 MACHARLA RAMA SAHITHI
+sanskruti patil
+M SAHARSH REDDY
+Koppisetti Sai Bhavya
+Alankruthi Saieni
+3 hrs ago
+Srinivas Sriramdas
+Demo Account
+Sri Charita KUSAMPUDI
+Preshitha Puppala
+Manaswini Akula
+Harini Induri
+Vamshi Raj
+GAYATRI GOTTUMUKKALA
+San Sherla
+Iam Uday
+Sreya _Ravi
+madhuri aradwad
+Poojitha Ravuri
+3 hrs ago
+Aditya Patil
+2 days ago
+Vinay Kumar
+6 months ago
+Abhinandan Panigrahi
+16 days ago
+Vijay Rohit
+2 hrs ago
+Aravind Barri
+3 days ago
+Sulagna Dutta
+6 hrs ago
+Aparna Daripalli
+2 months ago
+G Dharani
+6 days ago
+NAGA SAISRIYA CHAKRAVARTHI
+6 days ago
+Akhila Mailaram
+6 days ago
+Raghavendrarises@gmail.com Raghava
+17 hrs ago
+Bhavani Nimmala
+2 days ago
+Sowmya Sree Anupati
+4 days ago
+Jayanthi Gaddala
+2 days ago
+pavani basa
+1 month ago
+Venky Reddy
+3 days ago
+Megana Goud
+4 days ago
+Gundala Koustubha
+2 months ago
+Gaddam Sreeja
+4 days ago
+Tharuni reddy
+4 days ago
+Sharanya Chakravarthula
+1 month ago
+Nandini Reddy
+4 days ago
+Pavan 123
+4 days ago
+Sharia Areeb
+2 months ago
+LEKHYA BAYYA
+3 months ago
+Object Oriented Programming
+25
+Rank
+All topics
+Estimated End Date: 01/03/21
+Class Variables
+Let's go back to our example of the game characters.
+
+We will have certain cases where we want all our objects to have a certain value that is shared. For example, the maximum health of a Boy character in level 1 could be 100 but from level 2, it might be 200.
+
+As the game progresses to level 2, we would want all the objects to have a max_health increased to 200.
+
+In cases where we want values to be shared across all the objects, we use class variables
+
+Example
+
+class Boy:
+    max_health = 100
+ 
+    def __init__(self, name, clothes):
+        self.name = name
+        self.clothes = clothes
+ 
+    def say_hello(self):
+        print("Hi, my name is", self.name)
+        print("I am wearing", self.clothes, "clothes")
+ 
+boy1 = Boy("Alex", "Summer")
+boy1.say_hello()
+ 
+boy2 = Boy("Jimmy", "Winter")
+boy2.say_hello()
+ 
+print("Boy1's max health is", boy1.max_health)
+print("Boy2's max health is", boy2.max_health)
+ 
+print('--Entering Level 2--')# after entering Level 2
+Boy.max_health = 200
+ 
+print("Boy1's max health is", boy1.max_health)
+print("Boy2's max health is", boy2.max_health)
+Output
+
+Hi, my name is Alex
+I am wearing Summer clothes
+Hi, my name is Jimmy
+I am wearing Winter clothes
+Boy1's max health is 100
+Boy2's max health is 100
+--Entering Level 2--
+Boy1's max health is 200
+Boy2's max health is 200
+Notice how the max_health is not a part of the __init__ method? That's because it's not part of the object. Rather, it is part of the class as a while
+Changing the class variable once, changes it for all the other objects of the Boy class
+An important exception
+One thing to note here is that, when assigning the value to a class variable, always use the class's reference. If you use the object's reference, you will end up assigning a new variable to the object and bypass the class variable.
+
+What does that mean? Let's look at an example:
+
+class Boy:
+    max_health = 100
+ 
+    def __init__(self, name, clothes):
+        self.name = name
+        self.clothes = clothes
+ 
+    def say_hello(self):
+        print("Hi, my name is", self.name)
+        print("I am wearing", self.clothes, "clothes")
+ 
+boy1 = Boy("Alex", "Summer")
+boy1.say_hello()
+ 
+boy2 = Boy("Jimmy", "Winter")
+boy2.say_hello()
+ 
+print("Boy1's max health is", boy1.max_health)
+print("Boy2's max health is", boy2.max_health)
+ 
+print('--Entering Level 2--') # after entering Level 2
+boy1.max_health = 200
+ 
+print("Boy1's max health is", boy1.max_health) # now, refers to the Boy1's instance variable
+print("Boy2's max health is", boy2.max_health) # still refers to Boy class variable
+ 
+Boy.max_health = 300
+ 
+print("Boy1's max health is", boy1.max_health) # still refers to boy1's instance variable
+print("Boy2's max health is", boy2.max_health) # still refers to Boy class variable
+Output:
+
+Hi, my name is Alex
+I am wearing Summer clothes
+Hi, my name is Jimmy
+I am wearing Winter clothes
+Boy1's max health is 100
+Boy2's max health is 100
+--Entering Level 2--
+Boy1's max health is 200
+Boy2's max health is 100
+Boy1's max health is 200
+Boy2's max health is 300
+In the case where the object has a variable with the same name as a class variable, python prioritizes the instance variable
+This is an important point and you are sure to be asked this in interview questions.
+
+Go ahead and try out a few examples!
