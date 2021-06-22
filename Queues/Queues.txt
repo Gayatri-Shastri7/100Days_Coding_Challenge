@@ -1,0 +1,55 @@
+Implementing a Queue in Python
+Just like a stack, many of the queue's functionality can also be obtained from a list. However, in a queue, we want to strictly only insert from one end and remove from another end.
+
+The place we remove from is called the front -  the start of the list. This will always be at index 0 since we are using a list.
+
+The place we insert from is called the rear. This will be at the end of the list.
+
+To enforce this, we will define our own queue class.
+
+Our Queue class
+class Queue:
+    def __init__(self):
+        self.data = []
+We only need a list in order to implement the queue
+
+Now let us define the enqueue and dequeue methods:
+
+class Queue:
+    def __init__(self):
+        self.data = []
+    def enqueue(self,element):
+        self.data.append(element)
+    def dequeue(self):
+        if(len(self.data) > 0):
+            return self.data.pop(0)
+        return None
+In enqueue we append to the list
+In dequeue we remove from the start of the list. If there is no element, then we return None
+Finally, this is how we will instantiate the Queue:
+
+class Queue:
+    def __init__(self):
+        self.data = []
+    def enqueue(self,element):
+        self.data.append(element)
+    def dequeue(self):
+        if(len(self.data) > 0):
+            return self.data.pop(0)
+        return None
+ 
+myQueue = Queue()
+myQueue.enqueue(10)
+myQueue.enqueue(17)
+myQueue.enqueue(9)
+print(f'Removing: {myQueue.dequeue()}')
+print(f'Removing: {myQueue.dequeue()}')
+print(f'Removing: {myQueue.dequeue()}')
+print(f'Removing: {myQueue.dequeue()}')
+Output:
+
+Removing: 10
+Removing: 17
+Removing: 9
+Removing: None
+Go ahead and try out the upcoming questions on queues
