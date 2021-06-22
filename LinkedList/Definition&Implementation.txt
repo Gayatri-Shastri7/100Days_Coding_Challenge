@@ -1,0 +1,190 @@
+
+Linked List - Definition and Implementation in Python
+A linked list is a sequence of nodes, which are connected together via links. It has following properties:
+
+All the nodes are connected to each other via links(references).
+The last element points to nothing None
+Each node contains a data element and a reference to the next node of same type.
+A reference is maintained to first node to access the linked list. This reference is called HEAD.
+
+Comparison with Python Lists
+Before we understand what a linked list is in detail, lets try to understand why we need a linked list when we have many other data structures. e.g. Both lists and linked list are used to store data, but in what cases linked list is suitable over lists or vice versa, we need to differentiate this.
+
+So, here are few scenarios where linked list will outperform list:
+Insertion and Deletion operations are costly in lists. We may need to shift elements from left to right or vice versa depending on the position at which we want to add or delete an element.
+Examples:
+
+We have a list with following elements: Ar[] = { 10, 20, 30, 50, 70, .....}. Suppose we want to insert 40 into the array keeping array sorted, then we have to shift 50 and 70 to right, so that the room for 40 is created, and it can be inserted there.
+
+Linked List
+On the other hand, if the position at which we want to add an element is at the beginning, then the shifting operation is more expensive.
+
+Linked List
+Similarly, Deletion is also expensive with arrays.
+
+We will see that, Linked Lists give us much better performance in the above 2 cases.
+
+Few Disadvantages of Linked List
+Elements are accessed from beginning only and random access is not possible. Hence for example, we can do linear searching with linked list where as binary search is not possible.
+For example, if we want to search an element 3 in following linked list, we have to keep a pointer at the beginning of the linked list, and search linearly for the element.
+
+Linked List
+Implementing a Linked List
+First let's define the Node and LinkedList classes.
+# Node class 
+class Node: 
+    # Function to initialize the node object with data and next as null
+    def __init__(self, data): 
+        self.data = data
+        self.next = None 
+  
+  
+# Linked List class contains a Node object 
+class LinkedList: 
+    # Function to initialize head 
+    def __init__(self): 
+        self.head = None
+  
+Now, let's explore how to do the following:
+
+insertion (3 cases)
+deletion
+Insertion in a Linked List
+Given a linked list, we want to insert a new element in a linked list.
+
+Inserting an element in linked list can have three cases:
+
+Inserting an element in the beginning of the linked list.
+Inserting an element at the end of the linked list.
+Insert an element at after an element in the linked list.
+Inserting an element in the beginning of the linked list
+The new node is added before head of the linked list and the new node becomes the new head of the linked list.
+
+What if the linked is empty? The new nodes become the head.
+
+Our code logic looks like:
+
+Create a new temp node with the new element .
+Update the next reference of temp node, to point to the current head.
+Update the head to point to the temp node.
+Example
+
+Suppose we want to insert 10 at the beginning of following linked list:
+
+Linked List
+Create a temp node with data 10.
+
+Linked List
+Update the next pointer of temp node, to point to the current head.
+
+Linked List
+Update the head to point to the temp node.
+
+Linked List
+Final Linked List looks like:
+
+Linked List
+Function for Inserting an element in beginning of Linked List
+def InsertInBeginning(head, data) :
+    tempNode = Node(data) # using constructor to create a new node
+ 
+    # Update the next pointer of temp node, to point to the current head
+    tempNode.next = head
+ 
+    # Update the head to point to the tempNode
+    head = tempNode
+Inserting an element at the end of the linked list
+The new node is added after all the nodes of the linked list.
+
+What if the linked is empty? The new node becomes the head.
+
+Our code logic looks like:
+
+Create a new temp node with the new element, and next pointing to null.
+Initialize a current reference to the head of the linked list.
+If the Linked List is empty, then make the temp node as head.
+Traverse the whole linked list using next reference till current points to the last node.
+Update the next pointer of last node, to refer to the temp node.
+Example
+
+Suppose we want to insert 50 at the end of following linked list:
+
+Linked List
+Create a temp node with data 50, and next pointing to null.
+
+Linked List
+Initialize a current reference to the head of the linked list.
+
+Linked List
+Traverse the whole linked list using next reference till current points to the last node.
+
+Linked List
+Update the next reference of last node, to point to the temp node.
+
+Linked List
+Final Linked List looks like:
+
+Linked List
+Function for Inserting an element at the end of Linked List
+def InsertInEnd(head, data):
+    # Create a new temp node with the new element and next as null
+    tempNode = Node(data)
+    
+    #Initialize a current pointer to the head of the linked list
+    current = head
+ 
+    # If the Linked List is empty, then make the temp node as head
+    if (head == None):
+        head = tempNode
+        return
+       
+    # Traverse the whole linked list till current points to the last node
+    while (current.next != None):
+        current = current.next; 
+   
+    # Update the next pointer of last node, to point to the temp node
+    current.next = tempNode; 
+    return
+Inserting an element after an element in the linked list
+The new node is added after an element of the linked list. If that element is not present in the linked list, this operation is not possible.
+
+Our code logic looks like:
+
+Let prev node be the node after which we want to insert element.
+Search for prev nodein the linked list.
+If prev node is null, return.
+Create a new temp node with the new element .
+Update next of temp node as next of prev node.
+Update next of prev_node to temp_node.
+Example
+
+Suppose we want to insert 25 after 20 in following linked list`:
+
+Linked List
+Create a temp nodewith data 25.
+
+Linked List
+Update next of temp nodeas next of prev node.
+
+Linked List
+Update next of prev_nodeto temp_node.
+
+Linked List
+Final Linked List looks like:
+
+Linked List
+Function for Inserting an element after an element in the linked list
+def InsertAfterElement(prev_node, data):
+    # Create a new temp node with the new element
+    temp_node = Node(data)
+   
+    # If prev_node is null, return
+    if (prev_node == None):
+        return
+    
+    # Update next of temp node as next of prev node
+    temp_node.next = prev_node.next;  
+   
+    #Update next of prev_node to temp_node
+    prev_node.next = temp_node; 
+For a more visual representation, make sure to check the animation for insertion in a linked list
