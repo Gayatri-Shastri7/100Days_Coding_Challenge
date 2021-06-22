@@ -61,7 +61,7 @@
     #5. Function to return the size of the stack
     #6. Function to check if the stack is empty or not
     #7. Function to check if the stack is full or not
-
+'''
 class Stack:
  
     # Constructor to initialize the stack
@@ -110,8 +110,40 @@ class Stack:
             return 1
         else:
             return 0
- 
-
+ '''
+#Method 2
+class Stack():
+    def __init__(self, size):
+        self.size = size
+        self.data = []
+        self.top = -1
+        
+    def push(self, element):
+        if(self.top < self.size):
+            self.data.append(element)
+            self.top = self.top + 1
+            
+    def pop(self):
+        popped_element = None
+        if(self.top>-1):
+            popped_element = self.data.pop() 
+            self.top = self.top - 1
+        return popped_element
+    
+    def peek(self):
+        if(self.top > -1):
+            return self.data[self.top]
+    def isEmpty(self):
+        if(self.top <= -1):
+            return '1'
+        else:
+            return '0'
+        
+    def isFull(self):
+        if(self.top == self.size - 1):
+            return '1'
+        else:
+            return '0'
 
 
 
