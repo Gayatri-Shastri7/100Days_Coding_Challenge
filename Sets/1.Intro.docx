@@ -1,0 +1,136 @@
+Sets in Python
+Sets are another important data structure. The major properties of sets are:
+
+The elements in a set are unique. That means we cannot have duplicates in a Set
+Each element within a set must be immutable. This means we can have integers, strings and even tuples to be part of the set. We cannot have a list in the set because a list is mutable
+The elements in a set are unordered. Recall that, in lists, the elements maintained the order of insertion. Here, there is no guarantee on what the order of the elements will be when added
+Defining a Set
+We can define a set in these ways. :
+
+Convert a list of tuple into a set using the set() function. This works on strings too
+User {} braces to declare a set
+Using the set function:
+
+nums_list = [1,'2',4,10,10,12,'2',1,3]
+ 
+mySet1 = set(nums_list)
+# value of mySet1 is {1, 3, 4, 10, 12, '2'}
+ 
+nums_tuple  = ('apple', 'food', 'fruit', 'food', 'banana', 'apple')
+mySet2 = set(nums_tuple)
+# value of mySet2 is {'banana', 'apple', 'fruit', 'food'}
+ 
+word = 'banana'
+mySet3 = set(word)
+# value of mySet3 is {'n', 'b', 'a'}
+Using the curly braces {}:
+
+mySet4 = {'apple', 'food', 'fruit', 'food', 'banana', 'apple'}
+# value of mySet4 is {'banana', 'apple', 'fruit', 'food'}
+ 
+mySet5 = {5, False, 'False', True, 'True', 5, 20, '100', 'word', True, False}
+# value of mySet5 is {False, True, '100', 'False', 5, 'True', 20, 'word'}
+Notice that
+
+in mySet4, though we added apple twice, Python ensured that the set has only one element with that value
+in mySet5, we can see that sets aren't restricted to having similar data types. Elements can be of different data types, as long as they are immutable
+Modifying
+Given a set, we have some standard functions that help us in modifying it
+
+add() - inserts an element into the set. If the element already exists then the set is not modified
+remove() - removes the given element from the set. If it doesn't exist in the set, then we get an error
+clear()  - removes all elements from the set
+pop() - removes a random element from the set
+Examples:
+
+mySet = {'hello'}
+mySet.add('is')
+mySet.add('this')
+mySet.add('is')
+mySet.add('Edyst')
+mySet.add('edyst')
+mySet.add('hello')
+print(mySet)
+# {'hello', 'is', 'this', 'edyst', 'Edyst'}
+ 
+mySet.remove('is')
+print(mySet)
+# {'hello', 'this', 'edyst', 'Edyst'}
+ 
+mySet.pop()
+print(mySet)
+# {'this', 'edyst', 'Edyst'}
+ 
+ 
+mySet.clear()
+print(mySet)
+# set()
+Operators in Sets
+Some of you might remember that we have a concept called Sets in mathematics. The Python sets are actually an extension of that concept.
+
+Remember the Set Theory in our mathematics classes? We had operations like: union, intersection, difference and so on...
+
+Well, all of these are possible in Python also!
+
+Set theory - quick revision
+Let's revise some of the old concepts of set theory. Let's say we have 2 sets, A and B, we have the following operations:
+
+Union (A | B) : consists of all unique elements present when A and B are combined
+Intersection (A & B) : consists of all elements  that are common in both A and B
+Difference (A - B): removes all elements from A that are present in B
+Symmetric Difference (A^B): removes all elements that are common between A and B
+Subset (A <=B) : A is a Subset of B if all elements of A are present in B
+Superset (A>=B): A is a Superset of B, if all elements of B are present in A
+Disjoint: A and B are disjoint if their intersection is null
+
+
+
+Disjoint Sets
+Example:
+
+A = {1,4,5,7,9,12,14}
+B = {2,4,10,14,20,25}
+ 
+result = A.union(B)
+print(result)
+# {1, 2, 4, 5, 7, 9, 10, 12, 14, 20, 25}
+ 
+result = A.intersection(B)
+print(result)
+# {4, 14}
+ 
+result = A.difference(B)
+print(result)
+# {1, 5, 7, 9, 12}
+ 
+print(A.isdisjoint(result))
+# False
+ 
+print(B.isdisjoint(result))
+# True
+ 
+result = A.intersection(B)
+ 
+print(result.issubset(A))
+#True
+ 
+print(result.issubset(B))
+#True
+ 
+print(A.issuperset(result))
+#True
+ 
+print(B.issuperset(result))
+#True
+ 
+result  = A.symmetric_difference(B)
+print(result)
+# {1, 2, 5, 7, 9, 10, 12, 20, 25}
+Alternatively, you can also use symbols to do set arithmetic:
+Operation	Function	Symbol
+Union	.union()	|
+Intersection	.intersection()	&
+Difference	.difference()	-
+Symmetric Difference	.symmetric_difference()	^
+Subset	.subset()	<=
+Superset	.superset()	>=
