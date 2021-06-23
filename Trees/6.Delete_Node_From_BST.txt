@@ -1,0 +1,125 @@
+Deletion of a node from BST
+Give a node and root of the tree, we have to delete that node from the binary search tree.
+
+The node that has to be deleted can fall into either of the following case:
+
+Node to be deleted is a leaf.
+Node to be deleted has only one child.
+Node to be deleted has two children.
+How do we delete a node in BST
+Given root of the tree, do inorder traversal of the tree and hence first traverse to the node to be deleted.
+Following are the way we can handle the above mentioned three cases:
+
+Node to be deleted is a leaf - We simply remove the node in this case.
+Trees
+
+Node to be deleted has only one child - We copy the child node to this node, and then delete the child.
+Trees
+
+Node to be deleted has two children -
+
+First find the inorder successor of the node.
+
+Copy the content of inorder successor to this node.
+
+Delete the inorder successor.
+
+Inorder successor can be obtained by finding the minimum value in right child of the node.
+
+Trees
+
+Example
+
+We want to delete 14 from following tree. First we reach the node to be deleted by traversing the tree. Here 14 is leaf node, hence we simply delete the node.
+
+Trees
+
+We want to delete 17 from following tree. First we reach the node to be deleted by traversing the tree. Here 17 has one child, hence we copy the content of its child i.e. 14 to it, and delete 14 i.e. the leaf node.
+
+Trees
+
+We want to delete 3 from following tree. First we reach the node to be deleted by traversing the tree. Here 3 has two children, hence we find its inorder successor (minimum value in right subtree) i.e. 4. We copy 4 to 3, and then delete 4.
+Trees
+
+Function to delete an element from BST
+def deleteNode(root, key): 
+    
+    if (root == NULL) 
+        return root 
+  
+    # If the key is smaller than root, recurse in left subtree
+    if (key < root.key): 
+        root.left = deleteNode(root.left, key) 
+  
+    # Else recurse in right subtree
+    elif (key > root.key): 
+        root.right = deleteNode(root.right, key) 
+  
+    # if key equals root node, delete the node
+    else:
+        
+        # node with only one child or no child 
+        if (root.left == NULL): 
+         
+            temp = root.right 
+            return temp 
+         
+        elif (root->right == NULL): 
+         
+            temp = root.left 
+            return temp 
+         
+  
+        # node with two children: Get the inorder successor (smallest in the right subtree) 
+        temp = minValueNode(root.right) 
+  
+        # Copy the inorder successor's content to this node 
+        root.key = temp.key 
+  
+        # Delete the inorder successor 
+        root.right = deleteNode(root.right, temp.key) 
+     
+    return root 
+ 
+struct node* deleteNode(struct node* root, int key) 
+{ 
+    if (root == NULL) return root; 
+  
+    // If the key is smaller than root, recurse in left subtree
+    if (key < root->key) 
+        root->left = deleteNode(root->left, key); 
+  
+    // Else recurse in right subtree
+    else if (key > root->key) 
+        root->right = deleteNode(root->right, key); 
+  
+    // if key equals root node, delete the node
+    else
+    { 
+        // node with only one child or no child 
+        if (root->left == NULL) 
+        { 
+            struct node *temp = root->right; 
+            free(root); 
+            return temp; 
+        } 
+        else if (root->right == NULL) 
+        { 
+            struct node *temp = root->left; 
+            free(root); 
+            return temp; 
+        } 
+  
+        // node with two children: Get the inorder successor (smallest 
+        // in the right subtree) 
+        struct node* temp = minValueNode(root->right); 
+  
+        // Copy the inorder successor's content to this node 
+        root->key = temp->key; 
+  
+        // Delete the inorder successor 
+        root->right = deleteNode(root->right, temp->key); 
+    } 
+    return root; 
+} 
+ 

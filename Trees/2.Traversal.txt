@@ -1,0 +1,41 @@
+Traversal
+Before trees, all of the data structures we have seen are linear in nature. What that meant was that there was only one way of going through the data structure: linearly.
+
+In a linked list, we can start from first and keep going till we reach the end.
+
+However, what about a tree? How will we go through each element?
+
+Take the example of the following tree:
+
+Tree
+
+How will we display all the elements? In what order?
+
+In trees, thereare many ways in which we can traverse. Let us look at one way called the preorder traversal.
+
+Preorder Traversal
+In Preorder Traversal, we do the following steps at each node:
+
+we print the current node
+we visit the left subtree
+we visit the right subtree
+Tree
+
+So, for the following tree:
+
+Tree
+
+Our Preorder Traversal is:
+
+7, 4, 2, 3, 6, 5, 12, 9, 8, 11, 19, 15, 20
+The pesudo-code for the traversal is:
+
+preorder (node x)
+    if x == null
+        return
+    else
+        print x.data
+        preorder(x.left)
+        preorder(x.right)
+As you can see, we have used recursion to help us with the traversal. As you attempt more programs, you will notice that recursion is very useful when it comes to trees.
+
