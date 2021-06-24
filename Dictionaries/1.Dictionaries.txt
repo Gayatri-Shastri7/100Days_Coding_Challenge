@@ -1,0 +1,140 @@
+Dictionaries in Python
+Yet another kind of data structure that Python offers us is the Dictionary.
+
+A dictionary is a key-value pair. Keys are unique and all the keys put together must form a set. Values may be duplicates.
+
+The best way to understand is by thinking of an actual dictionary. Each word or key appears only once, but the meanings of many words can be the same.
+
+Defining a dictionary
+There are 3 main ways in which we define dictionaries
+
+Using {} braces and separating the key value pairs by :
+Example:
+
+address = {
+    "street": 10,
+    "city": "Canaan",
+    "state": "Turkana",
+    "country": "Wakanda",
+    "eligible": True
+}
+We can also have a list of tuples. The first element of each tuple is the key and the second element is the value. We then convert the list to a dictionary
+address = [ ("street", 10), ("city", "Canaan"), ("state", "Turkana"), ("country", "Wakanda"), ("eligible", True)] # list of tuples
+address = dict(address) # converts to a dictionary
+If all the keys are simple string value types, then we can assign in the following manner too:
+address = dict(
+    street = 10,
+    city = "Canaan",
+    state = "Turkana",
+    country = "Wakanda",
+    eligible = True
+)
+Accessing and Printing the elements of a Dictionary
+The simplest way to display the entire dictionary is to use the print statement:
+address = {
+    "street": 10,
+    "city": "Canaan",
+    "state": "Turkana",
+    "country": "Wakanda",
+    "eligible": True
+}
+print(address)
+# {'street': 10, 'city': 'Canaan', 'state': 'Turkana', 'country': 'Wakanda', 'eligible': True}
+Accessing specific elements: We can access the value of a particular key by using the [] brackets. For example, we want to print only the street and state name:
+address = {
+    "street": 10,
+    "city": "Canaan",
+    "state": "Turkana",
+    "country": "Wakanda",
+    "eligible": True
+}
+ 
+print(address["street"]) 
+# 10
+ 
+print(address["state"])
+# Turkana
+Similarly, if we want to go through all the keys and then print the value of each key, we can use the familiar for .... in ..... pattern:
+address = {
+    "street": 10,
+    "city": "Canaan",
+    "state": "Turkana",
+    "country": "Wakanda",
+    "eligible": True
+}
+ 
+# this is how we print all the keys
+ 
+for key in address:
+    print(key, end = ' ')
+ 
+# street city state country eligible
+ 
+# to print the corresponding values:
+ 
+for key in address:
+    value = address[key]
+    print(key, value)
+ 
+# street 10
+# city Canaan
+# state Turkana
+# country Wakanda
+# eligible True
+Keys
+Note that, dictionaries are key-value pairs. While the values of a certain key can be anything, the key itself has certain restrictions:
+
+Keys in a dictionary will be unique. If we try to assign the key a certain value, after key already been assigned, then it will just update the prior value
+Keys must be immutable. Therefore, we can choose integers, strings and even tuples. However, we cannot choose lists as keys
+Just as in sets and lists, we can use the len keyword to find the length of the dictionary.
+
+Important Built-in Methods
+Method	Description
+clear()	removes all elements from the dictionary
+get(key)	gets the value of a particular key
+items()	converts the given the dictionary into a list of tuples
+keys()	returns a list of keys
+values()	returns a list of values
+pop(key)	removes the key-value pair of a key, returns the value
+update(dict2)	updates the first dictionary with the key-values of 2nd dictionary
+Example:
+
+address = {
+    "street": 10,
+    "city": "Canaan",
+    "state": "Turkana",
+    "country": "Wakanda",
+    "eligible": True
+}
+ 
+print(address.get("country"))
+# Wakanda
+ 
+all_pairs = address.items()
+print(all_pairs)
+# dict_items([('street', 10), ('city', 'Canaan'), ('state', 'Turkana'), ('country', 'Wakanda'), ('eligible', True)])
+ 
+all_keys = address.keys()
+print(all_keys)
+# dict_keys(['street', 'city', 'state', 'country', 'eligible'])
+ 
+all_values = address.values()
+print(all_values)
+# dict_values([10, 'Canaan', 'Turkana', 'Wakanda', True])  
+ 
+val = address.pop("eligible")
+print(val)
+# True
+# also eligible is not part of this dictionary after this operation
+ 
+friend_address = {
+    "street": 10,
+    "state": "valhalla",
+    "planet": "asgard",
+}
+ 
+address.update(friend_address)
+print(address)
+# {'street': 10, 'city': 'Canaan', 'state': 'valhalla', 'country': 'Wakanda', 'planet': 'asgard'}
+ 
+# previous values got updated. If key did not exist, then it got added
