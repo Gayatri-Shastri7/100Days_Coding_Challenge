@@ -11,11 +11,19 @@ Example Input:
 Output:
 5
 '''
+#Method-1
 def solve(A,B):
     # write your logic from here
     a = (A['x'] - B['x']) ** 2
     b = (A['y'] - B['y']) ** 2
     print(int((a+b)**0.5))
+    
+#Method-2
+def solve(A,B):
+    # write your logic from here
+    a= (A['x']-B['x'])
+    b =(A['y']-B['y'])
+    print(int((a*a+b*b)**0.5))
 '''
 Status
 Test Cases Passed
