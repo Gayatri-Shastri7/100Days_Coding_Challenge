@@ -1,0 +1,199 @@
+Sorting Objects in Python
+We have so far covered a lot of new data structures which allow us to store and structure the data as per our needs.
+
+As we have seen, we need not only store the basic data types like integers or strings, but rather we can also store objects in these data structures. These can be any objects, for example the Boy and Calculator objects that we created earlier.
+
+The data structures that we have discussed allow us to sort the elements also.
+
+However, this gets tricky when we have custom objects.
+
+For example, let's say we define the following Student class, initialize 3 student objects:
+
+class Student:
+    def __init__(self, name, age, section):
+        self.name = name
+        self.age = age
+        self.section = section
+    def printValues(self):
+        print(f'Name: {self.name}')
+        print(f'Age: {self.age}')
+        print(f'Section: {self.section}')
+        print('---')
+ 
+ 
+student_1 = Student('Andy', 30, 'C')
+student_2 = Student('Kevin', 25, 'B')
+student_3 = Student('Erin', 18, 'A')
+ 
+student_list = [student_1, student_2, student_3]
+ 
+for student in student_list:
+    student.printValues()
+Output:
+
+Name: Andy
+Age: 30
+Section: C
+---
+Name: Kevin
+Age: 25
+Section: B
+---
+Name: Erin
+Age: 18
+Section: A
+---
+We get the above output based on the order in which we have inserted the elements into the list.
+
+What if we wanted the elements sorted in order of their section? Or the elements should be sorted in order of their age? What about in reverse order?
+
+Python returns for us a sorted list using the sorted function. But that works if the elements to be sorted are all integers, strings etc. - things that can be sorted. How will Python know how to sort a list of objects?
+
+Ways to sort objects
+Using the key parameter
+In the sort or sorted functions, one can pass a function into the key parameter that will tell us how to sort
+
+Let's say we want to sort the above Student objects using their names. Let us define a function that will return the name of the of the object:
+
+class Student:
+    def __init__(self, name, age, section):
+        self.name = name
+        self.age = age
+        self.section = section
+    def printValues(self):
+        print(f'Name: {self.name}')
+        print(f'Age: {self.age}')
+        print(f'Section: {self.section}')
+        print('---')
+ 
+def getName(student): # function to return name
+    return student.name
+ 
+### initializing student objects ###
+ 
+student_1 = Student('Andy', 30, 'C')
+student_2 = Student('Kevin', 25, 'B')
+student_3 = Student('Erin', 18, 'A')
+ 
+### inserting into a list ###
+ 
+student_list = [student_1, student_2, student_3]
+ 
+### passing the function into the key ###
+ 
+student_list.sort(key=getName)
+ 
+for student in student_list:
+    student.printValues()
+Output
+
+Name: Andy
+Age: 30
+Section: C
+---
+Name: Erin
+Age: 18
+Section: A
+---
+Name: Kevin
+Age: 25
+Section: B
+---
+We can also define the function within the sort function:
+class Student:
+    def __init__(self, name, age, section):
+        self.name = name
+        self.age = age
+        self.section = section
+    def printValues(self):
+        print(f'Name: {self.name}')
+        print(f'Age: {self.age}')
+        print(f'Section: {self.section}')
+        print('---')
+ 
+def getName(student): # function to return name
+    return student.name
+ 
+### initializing student objects ###
+ 
+student_1 = Student('Andy', 30, 'C')
+student_2 = Student('Kevin', 25, 'B')
+student_3 = Student('Erin', 18, 'A')
+ 
+### inserting into a list ###
+ 
+student_list = [student_1, student_2, student_3]
+ 
+### passing the function into the key ###
+ 
+student_list.sort(key=lambda x: x.section)
+ 
+for student in student_list:
+    student.printValues()
+Output:
+
+Name: Erin
+Age: 18
+Section: A
+---
+Name: Kevin
+Age: 25
+Section: B
+---
+Name: Andy
+Age: 30
+Section: C
+---
+What happened here? We used a lambda function, which is basically a one line function. Here is how to read it:
+
+lambda x means we are applying a function on x
+: to the right side will be what we are returning
+x.section we are returning the section
+Reversing the order
+If we want to reverse the order of sort, we need to use the reverse parameter:
+
+class Student:
+    def __init__(self, name, age, section):
+        self.name = name
+        self.age = age
+        self.section = section
+    def printValues(self):
+        print(f'Name: {self.name}')
+        print(f'Age: {self.age}')
+        print(f'Section: {self.section}')
+        print('---')
+ 
+def getName(student): # function to return name
+    return student.name
+ 
+### initializing student objects ###
+ 
+student_1 = Student('Andy', 30, 'C')
+student_2 = Student('Kevin', 25, 'B')
+student_3 = Student('Erin', 18, 'A')
+ 
+### inserting into a list ###
+ 
+student_list = [student_1, student_2, student_3]
+ 
+### passing the function into the key ###
+ 
+student_list.sort(key=lambda x: x.age, reverse = True)
+ 
+for student in student_list:
+    student.printValues()
+Output:
+
+Name: Andy
+Age: 30
+Section: C
+---
+Name: Kevin
+Age: 25
+Section: B
+---
+Name: Erin
+Age: 18
+Section: A
+---
+As we can see, the objects are displayed in descending order of ages.
