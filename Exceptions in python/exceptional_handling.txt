@@ -1,0 +1,91 @@
+Exceptions in Python
+By now, you have written many programs. For sure, you have encountered many different types of errors. All great programmers have faced these errors, so don't worry!
+
+However, some of the errors you faced are different from others.
+
+Let's look at an example code, for dividing 2 numbers:
+
+numerator = int(input())
+denominator = int(input()
+ 
+result = numerator/denominator
+print(result)
+If we try to run this code, we get the following output:
+
+    result = numerator/denominator
+         ^
+SyntaxError: invalid syntax
+It complains that the syntax is invalid. Why? This is because we missed a ) in the second statement. Let's fix that:
+
+numerator = int(input())
+denominator = int(input()) # added the bracket
+ 
+result = numerator/denominator
+print(result)
+And now, for inputs 12 and 3, the output we get is:
+
+4.0
+Great! The error we saw earlier is called a syntax error. Such errors occur when we have given some wrong syntax.
+
+Let's look at another type of error, let's say our input was 12 and 0, we get the following output after running the code:
+
+Traceback (most recent call last):
+  File "sample.py", line 4, in <module>
+    result = numerator/denominator
+ZeroDivisionError: division by zero
+This causes us an error while running the code. There was no problem in the code itself - all our syntax was correct. But the input caused it to have a problem.
+
+Let's look at another example:
+
+my_list = ['pen', 'pineapple', 'apple', 'pen']
+index = int(input())
+ 
+element = my_list[index]
+print(element)
+For input 3, our output is:
+
+pen
+For input, input 5, our output is:
+
+Traceback (most recent call last):
+  File "sample.py", line 4, in <module>
+    element = my_list[index]
+IndexError: list index out of range
+Again, our code was correct, but because the input index was out of bounds, we got an error.
+
+Exceptions are those errors that result from code, even though the syntax was correct.
+
+In Python, the exceptions will also be accompanied by what type of error it is. For example, in the above 2 cases we received the errors: ZeroDivisionError and IndexError.
+
+Raising Custom Exceptions
+Python will raise some built-in exceptions. However, we get scenarios where we would like to raise our own exceptions. For example, if we are creating an online game and we need the age of the user to be above 5. In case it's not, we can raise an exception.
+
+To raise an exception in Python, we have 2 ways:
+
+use the raise keyword
+use assert keyword
+Example for raise keyword:
+
+age = int(input())
+if age < 5:
+    raise Exception(f'The entered age is {age}. Please enter an age above 5')
+For input 1, we get the following:
+
+Exception: The entered age is 1. Please enter an age above 5
+
+assertion
+
+Similarly, we can check using the assert keyword. In this case, we need not even write the if condition. The syntax for assert is:
+
+assert (condition), "Exception Message"
+
+Exception Message is displayed only if condition is false
+
+Example:
+
+age = int(input())
+ 
+assert (age>5), f"Entered age is {age} Please enter an age above 5"
+For an input of 3, we get the output:
+
+AssertionError: Entered age is 3 Please enter an age above 5
