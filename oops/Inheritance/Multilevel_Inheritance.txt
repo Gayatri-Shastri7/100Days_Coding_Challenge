@@ -1,0 +1,159 @@
+
+10
+Chat (49 Online)
+Search for coders
+Mariyala Harika
+Satyanarayana Uppada
+Keshav S
+JASWANTHIKA S
+VIGNESH SEKAR
+Meet Vaddoriya
+Charishma Seera
+Ishika L
+Dulam Sree Siva Gayathree Devi
+SUGGU PAVAN
+Sai Sushank Mantri Pramod
+kavya katkam
+Sasidhar Talluri
+ROHIT SAI PICHIKA
+Praneeth Bonagiri
+Mohammed Niha Tahoor
+Vilas chary sriramoji
+Garrepelli Laxmi Pranavi
+pragyna karunakaram
+svs sindhu
+Ruturaj Thakur
+Thriveni Thota
+Chidrapu Shreshta
+Bindhu123 Bindhu123
+Usha Nookala
+Hoyasala kannemadugu
+Bhavana Marpadaga
+Koti Amulya
+Melam Saikiran
+V Janaki Pratyusha TENNETI
+Sharmila Undru
+RUTHIKA ARAVA
+Praneetha Sangirala
+Vaishnavi Pandey
+Manaswini Kyama
+Abhigna Nadupalli
+Teja botta
+Lalana Palwaye
+Priyanka Patil
+Radha Kalyani NAKKA
+Sri Sai Kamal Asari
+Kiranmayee Peddinti
+MOUNIKA PEDDI
+Shivani Reddy
+Anudeep Dhavaleswarapu
+Prathmesh Raut
+Sravani Kaligotla
+Rutika Pasalkar
+Vaishnavi J
+Varthya Aarthi
+_deep_ _b_
+shivam keshri
+manasa poluru
+221810303050 SISTLA SAI SREYAS
+madhulika Erukulla
+Manthina Sriram Varma
+balu balaji
+Pradnya Digole
+Bondili Jaya Naga Keerthi Singh
+PUNNA SURYA
+Yash Varshney
+33 min ago
+KANURI MAHESH
+Gowtham Sai
+Neelam Vinay
+Haritha Rathamsetty
+Krishnam Naidu S
+18131A0597 MACHARLA RAMA SAHITHI
+sanskruti patil
+M SAHARSH REDDY
+Koppisetti Sai Bhavya
+Alankruthi Saieni
+3 hrs ago
+Srinivas Sriramdas
+Demo Account
+Sri Charita KUSAMPUDI
+Preshitha Puppala
+Manaswini Akula
+Harini Induri
+Vamshi Raj
+GAYATRI GOTTUMUKKALA
+San Sherla
+Iam Uday
+Sreya _Ravi
+madhuri aradwad
+Poojitha Ravuri
+3 hrs ago
+Aditya Patil
+2 days ago
+Vinay Kumar
+6 months ago
+Abhinandan Panigrahi
+16 days ago
+Vijay Rohit
+2 hrs ago
+Aravind Barri
+3 days ago
+Sulagna Dutta
+6 hrs ago
+Aparna Daripalli
+2 months ago
+G Dharani
+6 days ago
+NAGA SAISRIYA CHAKRAVARTHI
+6 days ago
+Akhila Mailaram
+6 days ago
+Raghavendrarises@gmail.com Raghava
+17 hrs ago
+Bhavani Nimmala
+2 days ago
+Sowmya Sree Anupati
+4 days ago
+Jayanthi Gaddala
+2 days ago
+pavani basa
+1 month ago
+Venky Reddy
+3 days ago
+Object Oriented Programming
+25
+Rank
+All topics
+Estimated End Date: 01/03/21
+Multilevel Inheritance in Python
+Till now, all the examples we have seen involve one class inheriting from another. However, Python allows us to have more than one level of inheritance.
+
+We could have the following structure:
+
+https://blockly.netlify.com/static/class_diagram_3.png
+When a class is derived from a class which is also derived from another class, i.e. a class having more than one parent classes, such inheritance is called Multilevel Inheritance.
+
+This is how the above class diagram would look in Python:
+
+class Player:
+    def __init__(self):
+        self.lives = 5
+        self.speed = 0
+        self.stamina = 10
+    def run(self):
+        self.speed = self.speed + 5
+ 
+ 
+class Warrior(Player):
+    def __init__(self):
+        super().__init__() # initializing all values of parent class
+        self.strength = 100
+ 
+class Archer(Warrior):
+    def shoot(self):
+        # definition for shoot
+ 
+class Knight(Warrior):
+    def fight(self):
+        # definition for fight

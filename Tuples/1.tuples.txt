@@ -1,0 +1,106 @@
+Tuples in Python
+We have already seen the power and use of Lists in Python.
+
+Tuples are another such built in data structure in Python. They are very similar to Lists, but there are some key differences. Let us look at how tuples are defined and then see the difference with a list.
+
+What is a tuple?
+A tuple is a collection of objects, just like a list. However, this collection once defined cannot be modified. This property is called immutability. We will explore mutability in just a while.
+
+We define a tuple using  the () brackets.
+
+user_names = ('Virat', 'Sindhu', 'Rahul')
+# tuple of strings
+ 
+user_details = ('admin', 123, 'admin@edyst.com', True)
+# tuple of different types
+ 
+user_preferences = ('mobile', ['day', 'night'], ('admin', 'normal_user', 'mentor'))
+# we can even have a list inside a tuple, and even a tuple inside a tuple
+There are other ways to assign values to a tuple:
+
+nums = 2,5,7
+# without round brackets
+ 
+nums = (1,)
+# when there's only 1 element in the tuple
+Functions that can be applied on tuples
+len - returns length of the tuple
+min - returns minimum element in the tuple
+max - returns maximum element in the tuple
+sum - returns sum of elements in the tuple
+sorted - returns a sorted list from the given tuple
+any - returns False if tuple is empty. Returns False if there are no non-False elements
+all - returns True if tuple is empty. Returns True if all items are non-False elements
+Tuple methods
+index - returns the index at which an element occurs in the tuple
+count - returns the count of the element in the given tuple
+Examples
+# len - returns length of the tuple
+# min - returns minimum element in the tuple
+# max - returns maximum element in the tuple
+# sum - returns sum of elements in the tuple
+# any - returns False is tuple is empty. Returns False if there are no non-False elements
+# all - returns True is tuple is empty. Returns True if all items are non-False elements
+# sorted - returns a sorted list from the given tuple
+# Tuple methods
+# index - returns the index at which an element occurs in the tuple
+# count - returns the count of the element in the given tuple
+ 
+nums = (17, 2, 0, 24, 3, 10, 12)
+ 
+print('minimum is', min(nums)) # minimum is 0
+ 
+print('maximum is', max(nums)) # maximum is 24
+ 
+print('sum is', sum(nums)) # sum is 68
+ 
+print('sorted is', sorted(nums)) # sorted is [0, 2, 3, 10, 12, 17, 24]
+# note that it returns a list
+ 
+nums = (1, False, 'hello') 
+print(any(nums)) # True
+# There are 2 non-False values in the tuple
+ 
+nums = (False, False, False)
+print(any(nums)) # False
+# There are no non-False values in the tuple
+ 
+nums = (1,False, 'hello') 
+print(all(nums)) # False
+# All elements are not True
+ 
+nums = (True, True, True)
+print(all(nums)) # True
+# All elements are True
+ 
+nums = (17, 2, 0, 17, 3, 2, 12)
+ 
+print('count of 17 is', nums.count(17)) # count of 17 is 2
+ 
+print('index of 2 is', nums.index(2)) # index of 2 is 1
+# returns the index of the first occurence of 2
+Packing & Unpacking
+We can pack and unpack the values of a tuple in the following way:
+
+natural_nums = (1,2,3,4,5,6)
+ 
+a,b,c,d,e,f = natural_nums # unpacking natural nums into individual variables
+ 
+print('a is', a , 'and e is', e)
+# a is 1 and e is 5
+#####
+ 
+natural_nums = a,b,c
+print(natural_nums) 
+# (1,2,3)
+# Here we packed the values into a tuple called natural_nums
+Immutable nature of Tuples
+Tuples cannot be modified. You can delete the entire tuple, or reassign the reference to another tuple. However, you cannot change the values or delete certain values within a tuple
+
+my_tuple = ('a','b','c','d')
+ 
+my_tuple[0] = 'e' # Not Allowed
+ 
+del my_tuple[1] # Not Allowed
+ 
+del my_tuple # Allowed

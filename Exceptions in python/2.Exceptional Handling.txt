@@ -1,0 +1,124 @@
+Handling Exceptions in Python
+As we have seen, exceptions disrupt the flow of the program. We need ways to identify and catch the exceptions, without stopping the program completely.
+
+This process is called Exception handling. We use the try-except block for this purpose.
+
+We wrap the parts which can given an exception in the try block, and catch the exception in the except block
+
+Example:
+
+try:
+    my_age = int(input())
+    friends_age = int(input())
+ 
+    ratio = my_age/friends_age
+ 
+    print(f'ratio is {ratio}')
+ 
+except ArithmeticError:
+    print("friend's age cannot be 0!")
+For input 10, 0, the output is:
+
+friend's age cannot be 0!
+Multiple exceptions
+We can use multiple except blocks as well, when more than 1 type of exception can be caught:
+
+try:
+    my_age = int(input())
+    friends_age = int(input())
+ 
+    ratio = my_age/friends_age
+ 
+    print(f'ratio is {ratio}')
+ 
+except ArithmeticError: # catches division by 0
+    print("friend's age cannot be 0!")
+ 
+except ValueError: # catches any error relating to type mismatch
+    print("Please enter numbers!")
+For the input 10, a, the output is:
+
+Please enter numbers!
+The best part about these approaches is that it does not stop the functioning of the program. The program carries on with the remaining part of the code.
+
+Catching all exceptions together
+Sometimes we aren't sure what kind of exceptions can come up. In those cases, we can avoid using the type of exception
+
+For example:
+
+try:
+    my_age = int(input())
+    friends_age = int(input())
+ 
+    ratio = my_age/friends_age
+ 
+    print(f'ratio is {ratio}')
+ 
+except:
+    print("An error occurred")
+Here, irrespective of which error occurred, we will always get the output An error occurred whenever there's an exception.
+
+However, this doesn't allow us to catch the error properly, hence we generally avoid using it.
+
+Using else with try
+Python gives us some more options with the try block. We can use the else block if none of the exceptions occurred.
+
+
+Let's look at an example:
+
+try:
+    my_age = int(input())
+    friends_age = int(input())
+ 
+    ratio = my_age/friends_age
+ 
+except ArithmeticError:
+    print("friend's age cannot be 0!")
+ 
+except ValueError:
+    print("Please enter numbers!")
+ 
+else:
+    print(f'ratio is {ratio}') # printing the ratio if no error occurred 
+We get the following outputs:
+
+Input 1	Input 2	Output	Explanation
+10	2	5.0	Enters the else block
+12	3	4.0	Enters the else block
+AL	2	Please enter numbers!	Enters the 2nd except block
+13	0	friend's age cannot be 0!	Enters the 1st except block
+Remember, the else block executed only if none of the exceptions are executed
+
+The finally block
+
+The finally block always runs. It doesn't matter if any exceptions occurred or not, the finally block will always run.
+
+Example:
+
+try:
+    my_age = int(input())
+    friends_age = int(input())
+ 
+    ratio = my_age/friends_age
+ 
+except ArithmeticError:
+    print("friend's age cannot be 0!")
+ 
+except ValueError:
+    print("Please enter numbers!")
+ 
+else:
+    print(f'ratio is {ratio}') # printing the ratio if no error occurred 
+ 
+finally:
+    print("Thanks for playing this game!")
+Input 1	Input 2	Output	Explanation
+10	2	5.0
+Thanks for playing this game!	Enters the else block
+12	3	4.0
+Thanks for playing this game!	Enters the else block
+AL	2	Please enter numbers!
+Thanks for playing this game!	Enters the 2nd except block
+13	0	friend's age cannot be 0!
+Thanks for playing this game!	Enters the 1st except block
+Go ahead and try out a few examples!

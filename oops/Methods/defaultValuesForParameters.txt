@@ -1,0 +1,214 @@
+
+10
+Chat (51 Online)
+Search for coders
+Mariyala Harika
+Satyanarayana Uppada
+Yash Varshney
+Keshav S
+JASWANTHIKA S
+VIGNESH SEKAR
+Meet Vaddoriya
+Charishma Seera
+Ishika L
+Dulam Sree Siva Gayathree Devi
+SUGGU PAVAN
+Sai Sushank Mantri Pramod
+kavya katkam
+Sasidhar Talluri
+ROHIT SAI PICHIKA
+Praneeth Bonagiri
+_deep_ _b_
+Mohammed Niha Tahoor
+Vilas chary sriramoji
+Garrepelli Laxmi Pranavi
+pragyna karunakaram
+svs sindhu
+Ruturaj Thakur
+Thriveni Thota
+Chidrapu Shreshta
+shivam keshri
+Bindhu123 Bindhu123
+Usha Nookala
+Hoyasala kannemadugu
+Bhavana Marpadaga
+Koti Amulya
+Melam Saikiran
+manasa poluru
+Neelam Vinay
+MOUNIKA PEDDI
+V Janaki Pratyusha TENNETI
+KANURI MAHESH
+madhulika Erukulla
+Varthya Aarthi
+Sharmila Undru
+RUTHIKA ARAVA
+Bondili Jaya Naga Keerthi Singh
+Praneetha Sangirala
+Vaishnavi Pandey
+Manaswini Kyama
+Pradnya Digole
+Lalana Palwaye
+Haritha Rathamsetty
+PUNNA SURYA
+Abhigna Nadupalli
+Krishnam Naidu S
+18131A0597 MACHARLA RAMA SAHITHI
+Teja botta
+sanskruti patil
+M SAHARSH REDDY
+Koppisetti Sai Bhavya
+Alankruthi Saieni
+3 hrs ago
+Srinivas Sriramdas
+Demo Account
+Sri Charita KUSAMPUDI
+Preshitha Puppala
+Manaswini Akula
+Harini Induri
+Vamshi Raj
+GAYATRI GOTTUMUKKALA
+San Sherla
+Priyanka Patil
+Iam Uday
+Sreya _Ravi
+madhuri aradwad
+Poojitha Ravuri
+3 hrs ago
+Aditya Patil
+2 days ago
+Vinay Kumar
+6 months ago
+Abhinandan Panigrahi
+16 days ago
+Vijay Rohit
+2 hrs ago
+Aravind Barri
+3 days ago
+Sulagna Dutta
+6 hrs ago
+Aparna Daripalli
+2 months ago
+G Dharani
+6 days ago
+NAGA SAISRIYA CHAKRAVARTHI
+6 days ago
+Akhila Mailaram
+6 days ago
+Raghavendrarises@gmail.com Raghava
+17 hrs ago
+Bhavani Nimmala
+2 days ago
+Sowmya Sree Anupati
+4 days ago
+Jayanthi Gaddala
+2 days ago
+pavani basa
+1 month ago
+Venky Reddy
+3 days ago
+Megana Goud
+4 days ago
+Gundala Koustubha
+2 months ago
+Gaddam Sreeja
+4 days ago
+Tharuni reddy
+4 days ago
+Sharanya Chakravarthula
+1 month ago
+Nandini Reddy
+4 days ago
+Pavan 123
+4 days ago
+Sharia Areeb
+2 months ago
+LEKHYA BAYYA
+3 months ago
+Sravya Amancherla
+4 days ago
+Pothula Harsha veena
+3 days ago
+Ambika Bongirwar
+1 month ago
+Sri Ram
+1 year ago
+Object Oriented Programming
+25
+Rank
+All topics
+Estimated End Date: 01/03/21
+Default values for parameters
+Methods & Functions in Python are very powerful. We have seen in the earlier chapters how we defined a method to do all kinds of things: generating patterns, series, searching and sorting.
+
+All the time that we have used methods, we have accepted the parameter from the user.
+
+However, sometimes we come need parameters in a method that already have a certain default value. In this case we use default values for parameters.
+
+We can use default methods for all methods, they need not always be inside a class.
+
+Let's look at an example. Let's say we want to print the factorial of a number using a method, such that, if no number is given, we will always print 4 factorial.
+
+This is how the code would be written:
+
+def factorial(num = 4):
+    fact = 1
+    for i in range(1,num+1):
+    	fact = fact * i
+    print(fact)
+ 
+factorial() # prints 4! because it takes the default parameter
+factorial(5) # prints 5!
+factorial(num = 6) # prints 6!
+In the above code, we have given the default value of 4. Without any arguments, the output is 4!
+With the argument as 5, it prints 5!
+We can also use the argument names to declare the values, as we have done in the last method call
+We can also have a combination of non-default and default arguments. We have to be careful to ensure that, in the method signature the default arguments appear after the non-default arguments
+
+For example, let's say we want to print the name of a person n number of times. IF value of n is not provided, we assume it to be 3.  Let us see how to define that:
+
+class Repeater:
+    def sayName(firstName, lastName, times = 3):
+        full_name = firstName + ' ' + lastName + ' '
+        print(full_name*times)
+ 
+Repeater.sayName('Edyst', 'Python')
+Repeater.sayName('Virat', 'Kohli', 5)
+Output:
+
+Edyst Python Edyst Python Edyst Python 
+Virat Kohli Virat Kohli Virat Kohli Virat Kohli Virat Kohli
+In the first call, we did not give any value to times, so it repeated for 3 times exactly
+In the second call, we passed 5 as a parameter and it repeated 5 times
+Another way to call methods is:
+
+class Repeater:
+    def sayName(firstName, lastName, times = 3):
+        full_name = firstName + ' ' + lastName + ' '
+        print(full_name*times)
+ 
+Repeater.sayName(lastName="Doe", times=4, firstName="John")
+Output:
+
+John Doe John Doe John Doe John Doe 
+Here, we called each argument by their names - so the ordering didn't matter.
+
+In object methods
+We can apply the same property to object methods.
+
+class Boy:
+    def __init__(self, name, clothes = "Summer"):
+        self.name = name
+        self.clothes = clothes
+    def printProps(self):
+        print(f'My name is {self.name} and clothes are {self.clothes}')
+ 
+boy1 = Boy("Alex") # created first boy object
+boy2 = Boy("Jimmy", "Winter") # created another boy object
+ 
+boy1.printProps()
+boy2.printProps()
+ 
+Here, by default we have given the clothes to have value Summer unless specified otherwise.
+
+Try out a few examples yourself!
